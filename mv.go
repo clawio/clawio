@@ -9,16 +9,16 @@ import (
 	"os"
 )
 
-var rmCmd = &cobra.Command{
-	Use:   "rm <path>",
-	Short: "Remove a resource",
-	Run:   rm,
+var mvCmd = &cobra.Command{
+	Use:   "mv <src> <dst>",
+	Short: "Moves a resource",
+	Run:   mv,
 }
 
-func rm(cmd *cobra.Command, args []string) {
+func mv(cmd *cobra.Command, args []string) {
 
-	if len(args) != 1 {
-		fmt.Println("You have to provide a path")
+	if len(args) != 2 {
+		fmt.Println("You have to provide src and dst paths")
 		os.Exit(1)
 	}
 
@@ -40,17 +40,18 @@ func rm(cmd *cobra.Command, args []string) {
 
 	c := pb.NewLocalClient(con)
 
-	in := &pb.RmReq{}
+	in := &pb.MvReq{}
 	in.AccessToken = token
-	in.Path = args[0]
+	in.Src = args[0]
+	in.Dst = args[1]
 
 	ctx := context.Background()
 
-	_, err = c.Rm(ctx, in)
+	_, err = c.Mv(ctx, in)
 	if err != nil {
-		fmt.Println("Cannot remove resource: " + err.Error())
+		fmt.Println("Cannot mv resource: " + err.Error())
 		os.Exit(1)
 	}
 
-	fmt.Println("Removed " + args[0])
+	fmt.Println("Moved " + args[0] + " to " + args[1])
 }

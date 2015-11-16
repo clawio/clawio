@@ -11,7 +11,7 @@ var childrenFlag bool
 func main() {
 
 	var mainCmd = &cobra.Command{
-		Use:   "claw",
+		Use:   "clawio",
 		Short: "ClawIO is a framework to test different tech stacks against sync protocols",
 	}
 
@@ -26,6 +26,7 @@ func main() {
 	mainCmd.AddCommand(mkdirCmd)
 	mainCmd.AddCommand(uploadCmd)
 	mainCmd.AddCommand(downloadCmd)
+	mainCmd.AddCommand(mvCmd)
 
 	mainCmd.Execute()
 }

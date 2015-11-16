@@ -1,7 +1,7 @@
 package main
 
 import (
-	log "github.com/fatih/color"
+	"fmt"
 	"github.com/spf13/cobra"
 	"net/http"
 	"os"
@@ -17,13 +17,13 @@ var uploadCmd = &cobra.Command{
 func upload(cmd *cobra.Command, args []string) {
 
 	if len(args) != 2 {
-		log.Red("You have to provide a local and remote path")
+		fmt.Println("You have to provide a local and remote path")
 		os.Exit(1)
 	}
 
 	token, err := getToken()
 	if err != nil {
-		log.Red("Authentication required")
+		fmt.Println("Authentication required")
 		os.Exit(1)
 	}
 
@@ -31,7 +31,7 @@ func upload(cmd *cobra.Command, args []string) {
 
 	fd, err := os.Open(args[0])
 	if err != nil {
-		log.Red("Cannot read local file: " + err.Error())
+		fmt.Println("Cannot read local file: " + err.Error())
 		os.Exit(1)
 	}
 
@@ -40,7 +40,7 @@ func upload(cmd *cobra.Command, args []string) {
 	c := &http.Client{}
 	req, err := http.NewRequest("PUT", "http://"+path.Join(addr, args[1]), fd)
 	if err != nil {
-		log.Red("Cannot created upload request: " + err.Error())
+		fmt.Println("Cannot created upload request: " + err.Error())
 		os.Exit(1)
 	}
 
@@ -49,11 +49,11 @@ func upload(cmd *cobra.Command, args []string) {
 
 	res, err := c.Do(req)
 	if err != nil {
-		log.Red("Upload failed: " + err.Error())
+		fmt.Println("Upload failed: " + err.Error())
 		os.Exit(1)
 	}
 
 	defer res.Body.Close()
 
-	log.Green("Uploaded " + args[0] + " to " + args[1])
+	fmt.Println("Uploaded " + args[0] + " to " + args[1])
 }

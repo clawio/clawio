@@ -1,7 +1,7 @@
 package main
 
 import (
-	log "github.com/fatih/color"
+	"fmt"
 	"github.com/spf13/cobra"
 	"os"
 	"os/user"
@@ -18,15 +18,15 @@ func logout(cmd *cobra.Command, args []string) {
 
 	u, err := user.Current()
 	if err != nil {
-		log.Red("Cannot access home directory")
+		fmt.Println("Cannot access home directory")
 		os.Exit(1)
 	}
 
 	err = os.RemoveAll(path.Join(u.HomeDir, ".clawio", "credentials"))
 	if err != nil {
-		log.Red("Cannot remove login credentials: ", err)
+		fmt.Println("Cannot remove login credentials: ", err)
 		os.Exit(1)
 	}
 
-	log.Green("Logged out")
+	fmt.Println("Logged out")
 }

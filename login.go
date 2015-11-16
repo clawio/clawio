@@ -1,8 +1,8 @@
 package main
 
 import (
+	"fmt"
 	pb "github.com/clawio/service.auth/proto"
-	log "github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -22,7 +22,7 @@ var loginCmd = &cobra.Command{
 func login(cmd *cobra.Command, args []string) {
 
 	if len(args) != 2 {
-		log.Red("You have to provide username and password")
+		fmt.Println("You have to provide username and password")
 		os.Exit(1)
 	}
 
@@ -30,7 +30,7 @@ func login(cmd *cobra.Command, args []string) {
 
 	con, err := grpc.Dial(addr, grpc.WithInsecure())
 	if err != nil {
-		log.Red("Cannot connect to server " + addr)
+		fmt.Println("Cannot connect to server " + addr)
 		os.Exit(1)
 	}
 
@@ -47,32 +47,32 @@ func login(cmd *cobra.Command, args []string) {
 	res, err := c.Authenticate(ctx, in)
 	if err != nil {
 		if grpc.Code(err) == codes.Unauthenticated {
-			log.Red("Invalid username or password")
+			fmt.Println("Invalid username or password")
 			os.Exit(1)
 		}
-		log.Red("Cannot connect to server " + addr)
+		fmt.Println("Cannot connect to server " + addr)
 		os.Exit(1)
 	}
 
 	// Save token into $HOMR/.clawio/credentials
 	u, err := user.Current()
 	if err != nil {
-		log.Red("Cannot access your home directory")
+		fmt.Println("Cannot access your home directory")
 		os.Exit(1)
 	}
 
 	err = os.MkdirAll(path.Join(u.HomeDir, ".clawio"), 0755)
 	if err != nil {
-		log.Red("Cannot create $HOME/.clawio configuration directory")
+		fmt.Println("Cannot create $HOME/.clawio configuration directory")
 		os.Exit(1)
 	}
 
 	err = ioutil.WriteFile(path.Join(u.HomeDir, ".clawio", "credentials"), []byte(res.Token), 0644)
 	if err != nil {
-		log.Red("Cannot save credentials into $HOME/.clawio/credentials")
+		fmt.Println("Cannot save credentials into $HOME/.clawio/credentials")
 		os.Exit(1)
 	}
 
-	log.Green("Logged in as " + in.Username)
+	fmt.Println("Logged in as " + in.Username)
 	os.Exit(0)
 }

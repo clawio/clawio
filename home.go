@@ -1,8 +1,8 @@
 package main
 
 import (
+	"fmt"
 	pb "github.com/clawio/service.localstore.meta/proto"
-	log "github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -19,7 +19,7 @@ func home(cmd *cobra.Command, args []string) {
 
 	token, err := getToken()
 	if err != nil {
-		log.Red("Authentication required")
+		fmt.Println("Authentication required")
 		os.Exit(1)
 	}
 
@@ -27,7 +27,7 @@ func home(cmd *cobra.Command, args []string) {
 
 	con, err := grpc.Dial(addr, grpc.WithInsecure())
 	if err != nil {
-		log.Red("Cannot connect to server " + addr)
+		fmt.Println("Cannot connect to server " + addr)
 		os.Exit(1)
 	}
 
@@ -42,9 +42,9 @@ func home(cmd *cobra.Command, args []string) {
 
 	_, err = c.Home(ctx, in)
 	if err != nil {
-		log.Red("Cannot create homedir: " + err.Error())
+		fmt.Println("Cannot create homedir: " + err.Error())
 		os.Exit(1)
 	}
 
-	log.Green("Home directory created")
+	fmt.Println("Home directory created")
 }
