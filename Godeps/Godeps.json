@@ -1,0 +1,77 @@
+{
+	"ImportPath": "github.com/clawio/clawio",
+	"GoVersion": "go1.5",
+	"Deps": [
+		{
+			"ImportPath": "github.com/clawio/service.auth/proto",
+			"Rev": "46b88e0873a87da680ff30911274f657d2f232e2"
+		},
+		{
+			"ImportPath": "github.com/clawio/service.localstore.meta/proto",
+			"Rev": "82211a9066dacb6c0ac65cf160836fdce54d958e"
+		},
+		{
+			"ImportPath": "github.com/cpuguy83/go-md2man/md2man",
+			"Comment": "v1.0.4",
+			"Rev": "71acacd42f85e5e82f70a55327789582a5200a90"
+		},
+		{
+			"ImportPath": "github.com/fatih/color",
+			"Comment": "v0.1-10-g8640971",
+			"Rev": "8640971291e54b520f781270275b7ed8762ac909"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "5baca1b63153b1a82014546382edbdd302b138b6"
+		},
+		{
+			"ImportPath": "github.com/inconshreveable/mousetrap",
+			"Rev": "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-isatty",
+			"Rev": "7fcbc72f853b92b5720db4a6b8482be612daef24"
+		},
+		{
+			"ImportPath": "github.com/russross/blackfriday",
+			"Comment": "v1.3-25-g660c9fd",
+			"Rev": "660c9fd283952bff5f651d5b598de779fc9e1bfc"
+		},
+		{
+			"ImportPath": "github.com/shiena/ansicolor",
+			"Rev": "d445752f6f66f9cd987722f109149f6799cdf1de"
+		},
+		{
+			"ImportPath": "github.com/shurcooL/sanitized_anchor_name",
+			"Rev": "10ef21a441db47d8b13ebcc5fd2310f636973c77"
+		},
+		{
+			"ImportPath": "github.com/spf13/cobra",
+			"Rev": "9bd7cfaa66c05c92b9ed42629888c2e10740fa13"
+		},
+		{
+			"ImportPath": "github.com/spf13/pflag",
+			"Rev": "08b1a584251b5b62f458943640fc8ebd4d50aaa5"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "b4e17d61b15679caf2335da776c614169a1b4643"
+		},
+		{
+			"ImportPath": "golang.org/x/net/http2",
+			"Rev": "b4e17d61b15679caf2335da776c614169a1b4643"
+		},
+		{
+			"ImportPath": "golang.org/x/net/internal/timeseries",
+			"Rev": "b4e17d61b15679caf2335da776c614169a1b4643"
+		},
+		{
+			"ImportPath": "golang.org/x/net/trace",
+			"Rev": "b4e17d61b15679caf2335da776c614169a1b4643"
+		},
+		{
+			"ImportPath": "google.golang.org/grpc",
+			"Rev": "1f1a4999ca75ba4fd6d5c91233383a170034a1a5"
+		}
+	]
+}
