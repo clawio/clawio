@@ -7,6 +7,7 @@ import (
 // TODO(labkode) Set log output to file in $HOME/.clawio/log
 
 var childrenFlag bool
+var checksumFlag string
 
 func main() {
 
@@ -16,6 +17,7 @@ func main() {
 	}
 
 	statCmd.Flags().BoolVar(&childrenFlag, "children", false, "retrieve children metadata")
+	uploadCmd.Flags().StringVar(&checksumFlag, "checksum", "", "send client checksum")
 
 	mainCmd.AddCommand(envCmd)
 	mainCmd.AddCommand(loginCmd)

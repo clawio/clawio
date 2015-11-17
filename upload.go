@@ -46,6 +46,7 @@ func upload(cmd *cobra.Command, args []string) {
 
 	req.Header.Add("Content-Type", "application/octet-stream")
 	req.Header.Add("Authorization", "Bearer "+token)
+	req.Header.Add("CIO-Checksum", checksumFlag)
 
 	res, err := c.Do(req)
 	if err != nil {
@@ -54,6 +55,11 @@ func upload(cmd *cobra.Command, args []string) {
 	}
 
 	defer res.Body.Close()
+
+	if res.StatusCode == 412 {
+		fmt.Printf("Object %s was corrupted during upload and server did not save it\n", args[0])
+		os.Exit(1)
+	}
 
 	fmt.Println("Uploaded " + args[0] + " to " + args[1])
 }
