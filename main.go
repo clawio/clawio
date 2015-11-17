@@ -29,6 +29,7 @@ func main() {
 	mainCmd.AddCommand(uploadCmd)
 	mainCmd.AddCommand(downloadCmd)
 	mainCmd.AddCommand(mvCmd)
+	mainCmd.AddCommand(cpCmd)
 
 	mainCmd.Execute()
 }
