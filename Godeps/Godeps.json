@@ -3,22 +3,9 @@
 	"GoVersion": "go1.5",
 	"Deps": [
 		{
-			"ImportPath": "github.com/clawio/service.auth/proto",
-			"Rev": "46b88e0873a87da680ff30911274f657d2f232e2"
-		},
-		{
-			"ImportPath": "github.com/clawio/service.localstore.meta/proto",
-			"Rev": "82211a9066dacb6c0ac65cf160836fdce54d958e"
-		},
-		{
 			"ImportPath": "github.com/cpuguy83/go-md2man/md2man",
 			"Comment": "v1.0.4",
 			"Rev": "71acacd42f85e5e82f70a55327789582a5200a90"
-		},
-		{
-			"ImportPath": "github.com/fatih/color",
-			"Comment": "v0.1-10-g8640971",
-			"Rev": "8640971291e54b520f781270275b7ed8762ac909"
 		},
 		{
 			"ImportPath": "github.com/golang/protobuf/proto",
@@ -29,17 +16,9 @@
 			"Rev": "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
 		},
 		{
-			"ImportPath": "github.com/mattn/go-isatty",
-			"Rev": "7fcbc72f853b92b5720db4a6b8482be612daef24"
-		},
-		{
 			"ImportPath": "github.com/russross/blackfriday",
 			"Comment": "v1.3-25-g660c9fd",
 			"Rev": "660c9fd283952bff5f651d5b598de779fc9e1bfc"
-		},
-		{
-			"ImportPath": "github.com/shiena/ansicolor",
-			"Rev": "d445752f6f66f9cd987722f109149f6799cdf1de"
 		},
 		{
 			"ImportPath": "github.com/shurcooL/sanitized_anchor_name",

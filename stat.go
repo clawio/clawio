@@ -29,7 +29,7 @@ func stat(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	addr := os.Getenv("CLAWIO_CLI_LOCALSTOREMETA_ADDR")
+	addr := os.Getenv("CLAWIO_CLI_META_ADDR")
 
 	con, err := grpc.Dial(addr, grpc.WithInsecure())
 	if err != nil {

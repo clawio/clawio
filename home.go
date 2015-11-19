@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	pb "github.com/clawio/service.localstore.meta/proto"
+	pb "github.com/clawio/clawio/proto/metadata"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -23,7 +23,7 @@ func home(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	addr := os.Getenv("CLAWIO_CLI_LOCALSTOREMETA_ADDR")
+	addr := os.Getenv("CLAWIO_CLI_META_ADDR")
 
 	con, err := grpc.Dial(addr, grpc.WithInsecure())
 	if err != nil {
@@ -33,7 +33,7 @@ func home(cmd *cobra.Command, args []string) {
 
 	defer con.Close()
 
-	c := pb.NewLocalClient(con)
+	c := pb.NewMetaClient(con)
 
 	in := &pb.HomeReq{}
 	in.AccessToken = token
