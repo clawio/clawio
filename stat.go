@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	pb "github.com/clawio/service.localstore.meta/proto"
+	pb "github.com/clawio/clawio/proto/metadata"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -39,7 +39,7 @@ func stat(cmd *cobra.Command, args []string) {
 
 	defer con.Close()
 
-	c := pb.NewLocalClient(con)
+	c := pb.NewMetaClient(con)
 
 	in := &pb.StatReq{}
 	in.AccessToken = token

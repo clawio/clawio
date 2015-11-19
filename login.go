@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	pb "github.com/clawio/service.auth/proto"
+	pb "github.com/clawio/clawio/proto/auth"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -26,7 +26,7 @@ func login(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	addr := os.Getenv("CLAWIO_CLI_AUTHADDR")
+	addr := os.Getenv("CLAWIO_CLI_AUTH_ADDR")
 
 	con, err := grpc.Dial(addr, grpc.WithInsecure())
 	if err != nil {

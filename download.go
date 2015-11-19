@@ -6,7 +6,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"path"
 )
 
 var downloadCmd = &cobra.Command{
@@ -28,10 +27,10 @@ func download(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	addr := os.Getenv("CLAWIO_CLI_LOCALSTOREDATA_ADDR")
+	addr := os.Getenv("CLAWIO_CLI_DATA_ADDR")
 
 	c := &http.Client{}
-	req, err := http.NewRequest("GET", "http://"+path.Join(addr, args[0]), nil)
+	req, err := http.NewRequest("GET", addr+args[0], nil)
 	if err != nil {
 		fmt.Println("Cannot created download request: " + err.Error())
 		os.Exit(1)

@@ -5,7 +5,6 @@ import (
 	"github.com/spf13/cobra"
 	"net/http"
 	"os"
-	"path"
 )
 
 var uploadCmd = &cobra.Command{
@@ -27,7 +26,7 @@ func upload(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	addr := os.Getenv("CLAWIO_CLI_LOCALSTOREDATA_ADDR")
+	addr := os.Getenv("CLAWIO_CLI_DATA_ADDR")
 
 	fd, err := os.Open(args[0])
 	if err != nil {
@@ -38,7 +37,7 @@ func upload(cmd *cobra.Command, args []string) {
 	defer fd.Close()
 
 	c := &http.Client{}
-	req, err := http.NewRequest("PUT", "http://"+path.Join(addr, args[1]), fd)
+	req, err := http.NewRequest("PUT", addr+args[1], fd)
 	if err != nil {
 		fmt.Println("Cannot created upload request: " + err.Error())
 		os.Exit(1)

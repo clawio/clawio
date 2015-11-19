@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package metadata;
+
+service Meta {
+    rpc Home(HomeReq) returns (Void) {}
+    rpc Mkdir(MkdirReq) returns (Void) {}
+    rpc Stat(StatReq) returns (Metadata) {}
+    rpc Cp(CpReq) returns (Void) {}
+    rpc Mv(MvReq) returns (Void) {}
+    rpc Rm(RmReq) returns (Void) {}
+}
+
+message Void {
+}
+
+message RmReq {
+    string access_token = 1;
+    string path = 2;
+}
+
+message MvReq {
+    string access_token = 1;
+    string src = 2;
+    string dst = 3;
+}
+
+message HomeReq {
+    string access_token = 1;    
+}
+
+message CpReq {
+    string access_token = 1;
+    string src = 2;
+    string dst = 3;
+}
+
+message MkdirReq {
+    string access_token = 1;
+    string path = 2;
+}
+
+message StatReq {
+    string access_token = 1;
+    string path = 2;
+    bool children = 3;
+}
+
+message Metadata {
+    string id = 1;
+    string path = 2;
+    uint32 size = 3;
+    bool is_container = 4;
+    string mime_type = 5;
+    string checksum = 6;
+    uint32 modified = 7;
+    string etag = 8; 
+    uint32 permissions = 9;
+    repeated Metadata children = 10;
+}
+
